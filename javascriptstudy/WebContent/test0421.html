@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>과제_구구단출력하기</title>
+<style type="text/css">
+	table {width:100%; border-collapse: collapse;}
+	th,td {border : 3px solid #bcbcbc;
+		text-align : center; padding : 8px;}
+	th {background-color : #e2e2e2; color:#111111;}
+	td {background-color : #f2f2f2;}
+	caption {
+		color : #111111; font-size : 20px; background-color: #f2f2f2;
+	}
+</style>
+<script type="text/javascript">
+	//세로출력 함수
+	function saerogugudan() {
+		var html="<table><caption>세로출력</caption>";
+		for(var i=2; i<=9; i++){
+			html += "<tr><th>" + i + "단</th></tr>";
+			for(var j=2; j<=9; j++){
+				html += "<tr><td>" + i + "*" + j + "=" + (i*j) + "</td></tr>"
+			}
+		}
+		html += "</table>"
+		console.log(html)
+		result.innerHTML = html;
+	}
+	//가로출력 함수
+	function garogugudan() {
+		var html="<table><caption>가로출력</caption>";
+//		<tr> <th>2단</th><th>3단</th>...9단</th>       </tr>
+//		<tr> <td>2*2=4</td><td>3*2=6</td>...9*2=18</td> </tr>
+		html += "<tr>"
+		for(var i=2; i<=9; i++){
+			html += "<th>" + i + "단</th>"
+		}
+		html += "</tr><tr>"
+		for(var i=2; i<=9; i++){
+			for(var j=2; j<=9; j++){
+				html += "<td>"+ j + "*" + i + "=" + (j*i) + "</td>"
+			}
+			html += "</tr>"
+		}
+		html += "</table>"
+		console.log(html)
+		result.innerHTML = html;
+	}
+	//2단출력 함수
+	function garogugudan2() {
+		var html="<table><caption>2단출력</caption>";
+		html += "<tr>"
+		for(var i=2; i<=5; i++){
+				html += "<th>" + i + "단</th>"
+		}
+		html += "</tr><tr>"
+		for(var i=2; i<=9; i++){
+			for(var j=2; j<=5; j++){
+				html += "<td>"+ j + "*" + i + "=" + (j*i) + "</td>"
+			}
+			html += "</tr>"
+		}
+		for(var i=6; i<=9; i++){
+			html += "<th>" + i + "단</th>"
+		}
+		html += "</tr><tr>"
+		for(var i=2; i<=9; i++){
+			for(var j=6; j<=9; j++){
+				html += "<td>"+ j + "*" + i + "=" + (j*i) + "</td>"
+			}
+			html += "</tr>"
+		}
+		html += "</table>"
+		console.log(html)
+		result.innerHTML = html;
+	}
+</script>
+</head>
+<body>
+<input type="button" value="세로출력" onclick="saerogugudan()">
+<input type="button" value="가로출력" onclick="garogugudan()">
+<input type="button" value="2단출력" onclick="garogugudan2()">
+<div id="result"></div>
+</body>
+</html>

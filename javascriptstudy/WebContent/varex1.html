@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- /WebContent/varex1.html 
+	자바스크립트의 내장객체 : 선언할 필요도 초기값을 줄 필요도 없음. html 문서에서만 사용된다면 기본적으로 사용가능
+	1. window 객체 : 자바스크립트의 최상단 객체. 객체명 생략 가능한 유일한 객체
+	2. document 객체 : 문서 담당 객체. 화면에 출력된 페이지의 내용 저장.
+	3. location 객체 : 현재 웹페이지의 url 정보 저장. 
+			location.href="...."  현재 내 url 페이지 정보를 "..." 로 변경하라는 의미.
+	4. history 객체 : 현재 웹페이지의 url 정보들을 내역으로 저장. 
+	5. navigator 객체 : 브라우저의 기본 정보 저장. 
+-->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>자바 스크립트에서 변수 선언</title>
+<script type="text/javascript">
+	radius=10;  /* 자료형 int 선언하지 않음. 다른 값으로도 변형 가능. */
+	var pi=3.14159265;  
+	window.alert(2*radius*pi)   /* alert : 화면에 확인창을 띄워주는 기능 , ; 찍지 않아도 출력됨, window 안에 있는 객체 -> 생략가능 */
+	document.write(2*radius*pi);   /* document.write : 화면에 값 입력 기능 => 변수 선언 필요 없음. 자바스크립트의 내장 객체.  */
+</script>
+</head>
+<body>
+
+</body>
+</html>

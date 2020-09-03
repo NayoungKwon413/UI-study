@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/css2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>css 함수 사용</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var color = ["red", "white", "purple"]
+/*
+		$("h1").css("color", function(index) {   // index = <h1> 의 인덱스
+			return color[index]
+		}).css("background-color", "black")
+*/
+		// $("h1") = documnet.getElementsByTagName("h1")
+		$("h1").css({"color":function(index) {  
+			return color[index]
+		},"background-color":"black"})
+		
+	})
+</script>
+</head>
+<body>
+<h1>Header-0 : red</h1>
+<h1>Header-1 : white</h1>
+<h1>Header-2 : purple</h1>
+</body>
+</html>

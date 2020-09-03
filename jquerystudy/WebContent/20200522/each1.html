@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/each1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>배열객체, each 함수 예제</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var arr = [
+			{name:"구디", link:"http://www.goodee.co.kr"},
+			{name:"다음", link:"http://www.daum.net"},
+			{name:"네이버", link:"http://www.naver.com"},
+			{name:"구글", link:"http://www.google.com"}
+		]
+		var output = "";
+		$.each(arr, function(i, item){
+			output += "<a href='" + item.link +"'>"
+			output += "<h3>" + (i+1) + "." + item.name + "</h3></a>"
+		})
+		$("#arr").html(output)
+		
+		var obj = {name:"홍길동", gender:"남자"}
+		// $.extend : 객체를 확장한다 -> 객체에 멤버를 추가
+		$.extend(obj, {part:"의적", loc:"율도국"})  // obj = {name:"홍길동", gender:"남자", part:"의적", loc:"율도국"}
+		output = ""
+		//each : 배열 형태 아니더라도 가능
+		$.each(obj, function(key, value){
+			output += key + ":" + value + "<br>"
+		})
+		$("#obj").html(output)    // html = innerHTML
+//		document.getElementById("obj").innerHTML = output
+	})
+</script>
+</head>
+<body>
+<div id="arr"></div>
+<div id="obj"></div>
+</body>
+</html>

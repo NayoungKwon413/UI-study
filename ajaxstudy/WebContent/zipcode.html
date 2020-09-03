@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- /WebContent/zipcode.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>우편번호 보기</title>
+<script type="text/javascript" src="ajax2.js"></script>
+<script type="text/javascript">
+	function resultView(a){   // a: ajax 객체
+		if(a.readyState == 4){
+			if(a.status == 200){
+				jsonView(a.responseText);
+			}else{
+				alert("서버오류:" + a.status);
+			}
+		}
+	}
+	function jsonView(zipdata){   // zipdata : json 파일내용이 문자열형태로 
+		var htmldata = "<br><table border='1'><tr><th>우편번호</th><th>읍면동</th><th>주소</th></tr>";
+		var jsondata = JSON.parse(zipdata);
+		for(var i=0; i<jsondata.ZIP.length; i++){
+			htmldata += "<tr><td>" + jsondata.ZIP[i].zipcode + 
+						"</td><td>" + jsondata.ZIP[i].dong + 
+						"</td><td>" + jsondata.ZIP[i].addr + 
+						"</td></tr>"
+		}
+		resultBody.innerHTML += htmldata;
+	}
+</script>
+</head>
+<body>
+<input type="button" value="우편번호" onclick="new ajax.xhr.Request('zipcode.jsp', null, resultView, 'GET')">
+<div id="resultBody"></div>
+</body>
+</html>

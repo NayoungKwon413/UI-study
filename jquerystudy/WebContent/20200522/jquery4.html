@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/jquery4.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>nth-child, nth-of-type 차이 예제</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+/*		$("h2:nth-child(3n)").css({"background":"black", "color":"white"});
+		$("h2:nth-child(3n+1)").css({"background":"yellow", "color":"blue"});
+		$("h2:nth-child(3n+2)").css({"background":"blue", "color":"yellow"});
+*/
+		$("h2:nth-of-type(3n)").css({"background":"black", "color":"white"});
+		$("h2:nth-of-type(3n+1)").css({"background":"yellow", "color":"blue"});
+		$("h2:nth-of-type(3n+2)").css({"background":"blue", "color":"yellow"});
+		
+		$("h3:nth-of-type(2n)").css({"background":"black", "color":"yellow"});
+		$("h3:nth-of-type(2n+1)").css({"background":"yellow", "color":"blue"});
+		
+/*		$("h1:eq(0)").css({"background":"pink", "color":"red"});
+		$("h1:eq(1)").css({"background":"pink", "color":"orange"});
+		$("h1:eq(2)").css({"background":"pink", "color":"yellow"});
+		$("h1:eq(3)").css({"background":"pink", "color":"green"});
+		$("h1:eq(4)").css({"background":"pink", "color":"blue"});
+		$("h1:eq(5)").css({"background":"pink", "color":"purple"});
+*/
+		var colors = ["red", "orange", "yellow", "green", "blue", "purple"]  // 배열
+		// $("h1") : h1 태그들 전부
+		// each    : 반복문 -> h1 태그 각각에 대해 해당 함수를 실행함
+		// i       : index
+		// item    : index에 해당하는 객체
+		// this    : 현재 반복문이 실행되고 있는 객체
+		$("h1").each(function(i, item){
+			$(this).css({"background":"pink","color":colors[i]})
+		})
+		
+		// colors 배열에 대한 반복문
+		$.each(colors, function(i, color){
+			$("h1:eq("+i+")").css({"background":"pink","color":color})
+		})
+	})
+	// h2:nth-child() : 모든 태그를 모두 세어서 처리
+	// h2:nth-of-type() : <h2> 태그만 세어 처리
+	
+</script>
+</head>
+<body>
+h3 태그 중 홀수번째를 노랑 바탕에 파란글씨로, 짝수번째를 검정바탕에 노랑글씨로 변경
+<h3>H3:Header_0</h3><h3>H3:Header_1</h3><h3>H3:Header_2</h3>
+<h3>H3:Header_3</h3><h3>H3:Header_4</h3><h3>H3:Header_5</h3><hr>
+h2 태그 중 3의 배수인 경우 검정 바탕에 흰글씨로, 3배수의 나머지가 1인 경우 노랑 바탕에 파랑 글씨로 설정하기
+<h2>H2:Header_0</h2><h2>H2:Header_1</h2><h2>H2:Header_2</h2>
+<h2>H2:Header_3</h2><h2>H2:Header_4</h2><h2>H2:Header_5</h2><hr>
+h1 태그의 색상을 분홍 바탕에 첫번째는 빨강~보라 글씨로 변경
+<h1>H1:Header_0</h1><h1>H1:Header_1</h1><h1>H1:Header_2</h1>
+<h1>H1:Header_3</h1><h1>H1:Header_4</h1><h1>H1:Header_5</h1>
+</body>
+</html>

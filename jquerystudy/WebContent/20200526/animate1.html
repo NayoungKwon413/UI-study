@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200526/animate1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>컴포넌트 이동하기</title>
+<style type="text/css">
+	div {
+		width:50px; height:50px;
+		background-color:orange;
+		position:relative;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	// $("태그").hover(f,f)  : 마우스가 영역 안에 있을 때 없을 때 각각 효과 설정
+	$(function(){
+		$("div").hover(function(){
+			$(this).animate({
+				left : 300
+			}, 'slow')
+		}, function(){
+			$(this).animate({
+				left : 0
+			}, 'slow')
+		})
+	})
+</script>
+</head>
+<body>
+	<div></div><div></div>
+	<div></div><div></div>
+	<div></div><div></div>
+</body>
+</html>

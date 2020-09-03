@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/jquery3.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>위치 관련 필터 선택자 : nth-child()</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	//nth-child() : index 가 아니라 순서! 1부터 시작
+	$(function(){
+		$("tr:nth-child(3n+1)").css("background","green")
+		$("tr:nth-child(3n+2)").css("background","yellow")
+		$("tr:nth-child(3n)").css("background","blue")
+		//첫번째 tr 태그는 검정바탕에 노랑글씨로 설정
+//		$("tr:first").css("background","black").css("color","yellow")
+		$("tr:eq(0)").css("background","black").css("color","yellow")  // tr:eq(index) : 순서 지정 가능
+		//세번째 tr 태그는 검정바탕에 흰글씨로 설정
+		$("tr:eq(2)").css("background","black").css("color","white")
+	})	
+</script>
+</head>
+<body>
+<table border="1">
+	<tr><th>이름</th><th>혈액형</th><th>지역</th></tr>
+	<tr><td>홍길동</td><td>O형</td><td>서울</td></tr>
+	<tr><td>이몽룡</td><td>A형</td><td>남원</td></tr>
+	<tr><td>임꺽정</td><td>B형</td><td>전주</td></tr>
+	<tr><td>김삿갓</td><td>AB형</td><td>하남</td></tr>
+	<tr><td>성춘향</td><td>A형</td><td>남원</td></tr>
+	<tr><td>향단이</td><td>B형</td><td>하남</td></tr>
+	<tr><td>방자</td><td>O형</td><td>하남</td></tr>
+</table>
+</body>
+</html>

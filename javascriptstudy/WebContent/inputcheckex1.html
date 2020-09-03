@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- /WebContent/inputcheckex1.html -->
+<!-- javascript 단에서 가장 많이 하는 일이 곧 입력과 검증! -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>로그인</title>
+<script type="text/javascript">
+	function checkinput(f){   // f: form 객체
+		if(f.id.value == ""){
+			alert("아이디를 입력하세요")
+			f.id.focus();     // id 칸에 focus 설정 (커서 위치)
+			return false;    
+		}
+		if(f.pw.value == ""){
+			alert("비밀번호를 입력하세요")
+			f.pw.focus();
+			return false;
+		}
+		// 나의 파라미터값을 openex1.html 페이지로 전달하기. 현재페이지는 종료
+		// opener : 나의 윈도우를 open 한 페이지의 window 객체 => 즉, openex1.html 페이지의 window 객체를 뜻함.
+		// opener 는 openex1.html 의 window 객체. openex1.html 에 접근할 수 있음
+		
+		// 아래는 name 속성으로 태그를 선택하는 방식임.
+/*		opener.document.f.id.value = f.id.value;
+		opener.document.f.pw.value = f.pw.value;
+*/		
+		// id 속성으로 태그를 선택하는 방식은?
+		opener.document.getElementById("id").value = f.id.value;
+		opener.document.getElementById("pw").value = f.pw.value;
+		
+//		window.close(); 혹은  self.close();
+		self.close();        // self : 나의객체를 뜻하는 예약어
+		return false;        //submit 이벤트가 유효함.
+	}
+</script>
+</head>
+<body>
+<!-- 
+	method : 요청방식 설정 속성
+	  post : 파라미터값이 전송되는 메세지의 body 부분에 붙어서 전송되는 방식. 전달되는 파라미터값이 숨겨짐.
+	  get  : 파라미터값이 url에 붙어서 전송되는 방식. 파라미터 값이 url과 함께 노출됨.
+	  		  기본요청방식이므로 method 속성이 생략되는 경우는 get 방식 요청임.
+	action : 요청되는 페이지 설정 속성
+			 action 속성이 생략되는 경우는 현재 페이지를 재요청함.
+	onsubmit : submit 버튼이 클릭된 경우 발생되는 이벤트
+	
+	return checkinput(this) : checkinput(this) 의 결과가 false 인 경우,
+							submit 이벤트 취소됨 -> 요청 페이지로 제어가 넘어가지 않음.
+ -->
+<form name="f" method="post" action="stringex1.html"
+	onsubmit="return checkinput(this)">              <!-- this : form 객체 -->
+	아이디 : <input type="text" name="id"><br>
+	비밀번호 : <input type="password" name="pw"><br>
+	<input type="submit" value="로그인">
+</form>
+</body>
+</html>

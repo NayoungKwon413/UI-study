@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- /src/mapper/StudentMapper1.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	컬럼, 프로퍼티 부분을 명확하게 구분할 것.
+	mariadb 에서는 대소문자를 구분하지 않아 컬럼명을 쓸 때 혼용하여도 상관 없으나,
+	프로퍼티는 대소문자 구분되기 때문에 주의해야함. 
+-->
+
+<mapper namespace="student">
+	<select id="count" resultType="int">
+		select count(*) from student
+	</select>
+	
+	<select id="list" resultType="Student">
+		select * from student
+	</select>
+	
+	<select id="selectgrade" resultType="Student" parameterType="int">
+		select * from student where grade=#{value}
+	</select>
+	
+	<select id="selectname" resultType="Student" parameterType="String">
+		select * from student where name like #{value}
+	</select>
+	
+	<insert id="insert" parameterType="Student">
+		insert into student(studno, name, id, jumin, grade, major1)
+			values(#{studno}, #{name}, #{id}, #{jumin}, #{grade}, #{major1})
+	</insert>
+	
+	<select id="selectno" resultType="Student" parameterType="int">
+		select * from student where studno=#{value}
+	</select>
+	
+	<update id="update" parameterType="Student">
+		update student set grade=#{grade}, weight=#{weight}, height=#{height}, profno=#{profno}
+			where studno=#{studno}
+	</update>
+	
+	<select id="selectkim" parameterType="String" resultType="Student">
+		select * from student where name like #{value}
+	</select>
+	
+	<select id="selectwh" parameterType="map" resultType="Student">   <!--  게시판에 제목으로 찾기, 작성자로 찾기 등 부분 만들떄 유용 -->
+		select * from student where ${col} >= #{val}
+	</select>
+	
+	<delete id="delete" parameterType="map">
+		delete from student where ${col}=#{val}
+	</delete>
+	
+	<select id="select4" parameterType="map" resultType="Student">
+		select * from student where ${col}=#{val}
+	</select>
+</mapper>

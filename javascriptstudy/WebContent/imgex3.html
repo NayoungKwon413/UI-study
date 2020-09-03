@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- /WebContent/imgex3.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 이동하기</title>
+<script type="text/javascript">
+	function moveimg(){
+		var left = layer1.style.left;   //0px
+		var top = layer1.style.top;     //100px
+		mx=parseInt(left.substring(0,left.indexOf("px")));
+		my=parseInt(top.substring(0, top.indexOf("px")));
+		layer1.style.left = mx + 10 +"px";
+		layer1.style.top = my + 10 + "px";
+	}
+</script>
+</head>
+<body>
+<input type ="button" value="이동" onclick="moveimg()">
+<div id="layer1" style="left:0px; top:100px; position:absolute; background-color:blue">
+	<img src = "img/0_over.jpg">
+</div>
+</body>
+</html>

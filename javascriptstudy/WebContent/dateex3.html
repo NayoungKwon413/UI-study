@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- /WebContent/dateex3.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>날짜 선택하기</title>
+<script type="text/javascript">
+	function show_date() {
+		dateprt.innerHTML = "선택된 날짜:" + date.value;   //yyyy-mm-dd
+	}
+</script>
+</head>
+<body>
+<input type="date" id="date"> <!-- HTML5 에 추가된 type 임. -->
+<input type="button" value="날짜입력" onclick="show_date()">
+<div id="dateprt"></div>
+</body>
+</html>

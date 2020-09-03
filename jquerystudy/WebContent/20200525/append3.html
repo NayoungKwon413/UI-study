@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200525/append3.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>DIV 태그에 내용 추가하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var info=[
+			{name:"홍길동", address:"서울시 강서구"},
+			{name:"김삿갓", address:"서울시 종로구"},
+			{name:"이몽룡", address:"서울시 금천구"},
+		]
+		// $("div") : div 들 전체를 배열로 받음
+		// index : div 순서 인덱스 저장
+		// $("태그1").append(function(){}) : 태그1에 function 기능을 append
+		// $("태그1").appendTo("태그2")     : 태그1을 태그2로 append
+		$("div").append(function(index){
+			var item = info[index]
+			var output = ""
+			output += "<h1>" + item.name + "</h1>"
+			output += "<h2>" + item.address + "</h2>"
+			return output;
+		})
+	})
+</script>
+</head>
+<body>
+<div>0.</div><div>1.</div><div>2.</div>
+</body>
+</html>

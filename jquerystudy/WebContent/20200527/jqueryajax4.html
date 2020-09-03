@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200527/jqueryajax4.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>자동 완성 구현</title>
+<style type="text/css">
+	.listbox{
+		position : relative;  left : 10px;  margin : 10px;
+		width : 200px;
+		background-color : #EEEEEE;  color : #FF00FF;
+		border : 2px solid #000;
+	}
+	.namelist {
+		margin : 0px;  padding : 0px;  list-style : none;
+	}
+	.hover {
+		background-color : cyan;  color : blue;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".listbox").hide();    // 첫화면에서는 listbox 숨김처리
+		$("#id").keyup(function(){    // id text칸에 키보드 값이 입력될때 마다 서버단으로 갔다옴
+			var data = "id=" + $("#id").val();
+			$.ajax({
+				url : "ajax4.jsp",
+				type : "POST",
+				data : data,
+				success : function(html){
+					$(".listbox").show();      
+					$(".namelist").html(html);     // html : ul 태그의 li 태그들
+					$("li").hover(function(){      // 마우스 이벤트 등록
+						$(this).addClass("hover");
+					}, function(){
+						$(this).removeClass("hover");
+					})
+					$("li").click(function(){
+						$("#id").val($(this).text());
+						$(".listbox").hide();
+					})
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+<span class="label">사용자 아이디</span>
+<input type="text" name="id" id="id">
+<div class="listbox"><div class="namelist"></div></div>
+</body>
+</html>

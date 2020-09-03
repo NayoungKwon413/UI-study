@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200525/eventex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이벤트 예제1</title>
+<style type="text/css">
+	.reverse{
+		background : black;
+		color : white;
+		
+	}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// on : click 이벤트 등록, click 할때마다 실행할 기능 부여
+		$("h1").on("click", function(){
+			// $(this) : 이벤트가 발생된 h1 태그. -> 이벤트 소스
+			$(this).html(function(index, html){
+				return html + "+"
+			})
+		})
+		// 여러개의 이벤트를 등록할 때, json 방식으로 가능
+		$("h1").on({
+			// mouseenter : 마우스 커서가 h1 태그의 영역 내부에 있는 경우 
+			// addClass("reverse")  : 해당 태그에 class 속성을 추가함. class="reverse"
+			mouseenter : function(){$(this).addClass("reverse");},     
+			// mouseleave : 마우스 커서가 h1 태그의 영역 내부에 없는 경우
+			// removeClass : 해당 태그에 class 속성을 제거함. 
+			mouseleave : function(){$(this).removeClass("reverse");} 
+		})	
+	})
+</script>
+</head>
+<body>
+<h1>Header-0</h1><h1>Header-1</h1><h1>Header-2</h1>
+</body>
+</html>

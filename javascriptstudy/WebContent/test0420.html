@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- /WebContent/test0420.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>문제 맞추기</title>
+</head>
+<body>
+<script type="text/javascript">
+	function getNum() {
+		return Math.floor(Math.random() *1000)%100;
+	}
+	var op = new Array("+","-","*","/");   //배열 : 첨자값은 0부터 시작함
+	function getOp() {
+		return op[Math.floor(Math.random() * 4)];
+	}
+	cnt=0, ccnt=0;
+	while(true){
+		str = getNum() + getOp() + getNum();
+		ans = prompt(str + "= 식의 정답을 입력하세요(종료:9999)") 
+		if(ans==9999) break;
+		if(eval(str) != ans){
+			document.write("입력한 값:" + ans);
+			document.write("<font color='red' size='5'> 틀렸습니다.</font>")
+			document.write("정답:"+ eval(str)+"<br>");
+		} else{
+			ccnt++;
+			document.write("<font color='blue' size='7'> 정답입니다.</font><br>")
+		}
+		cnt++;
+	}
+	document.write(cnt + "문제 중 총 "+ ccnt +"개를 맞추셨습니다.")
+</script>
+</body>
+</html>

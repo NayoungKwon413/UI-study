@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- /WebContent/mediaex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>@Media 태그 예제</title>
+<style type="text/css">
+	@media(max-width: 599px){  /* 화면의 크기가 최대 499 픽셀까지 red */
+		body{background: red;}
+	}
+	@media(min-width: 600px) and (max-width: 799px) {
+		body{background: green;}
+	}
+	@media(min-width: 800px){
+		body{background: blue;}
+	}
+</style>
+</head>
+<body>
+<h1>@media 태그 예제</h1>
+<p>화면의 크기 별로 바탕색이 달라집니다.</p>
+</body>
+</html>

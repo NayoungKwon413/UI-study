@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- /WebContent/exam2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>더하기 연산</title>
+<style type="text/css">
+	input {text-align:right;}
+</style>
+<script type="text/javascript">
+	function numadd(){
+//		n1=document.forms[0].n1.value;
+//		n2=document.forms[0].n2.value;
+		n1=document.f.n1.value;
+		n2=document.f.n2.value;
+//		document.f.result.value= parseInt(n1) + parseInt(n2);
+		document.f.result.value=eval(n1+"+"+n2);
+	}
+	function numcalc(){
+		n1=document.f2.n1.value;
+		n2=document.f2.n2.value;
+		ns=document.f2.op.value;
+		document.f2.result.value=eval(n1+ns+n2);
+	}
+</script>
+</head>
+<body>
+<h3>두 수를 입력받아 더하기 한 결과 입력화면에 출력하기</h3>
+<form name='f'>
+	<input type="text" name="n1" size="5"> +
+	<input type="text" name="n2" size="5"> =
+	<input type="text" name="result" size="5">
+	<input type="button" value="결과보기" onclick="numadd()"><br>
+</form><br>
+<h3>두 수를 입력받아 연산의 결과를 결과 입력란에 출력하기</h3>
+<form name='f2'>
+	<input type="text" name="n1" size="5"> +
+	<select name="op"><option>+</option><option>-</option><option>*</option><option>/</option></select>
+	<input type="text" name="n2" size="5"> =
+	<input type="text" name="result" size="5">
+	<input type="button" value="결과보기" onclick="numcalc()"><br>
+</form>
+</body>
+</html>

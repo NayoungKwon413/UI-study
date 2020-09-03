@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- /WebContent/windowex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>window 객체 : 메세지 창 3종류</title>
+</head>
+<body>
+<!-- 
+	this : 클릭된 radio 버튼 
+	this.form : name="f"인 form 객체. this가 속한 form 객체를 뜻함. 
+-->
+<form name="f">
+	<input type="radio" name="dbox" onclick="this.form.echo.value=alert('alert 메세지 창 호출')">
+	alert 메세지 창 호출<br>
+	<input type="radio" name="dbox" onclick="this.form.echo.value=confirm('confirm 메세지 창 호출')">
+	confirm 메세지 창 호출<br>
+	<input type="radio" name="dbox" onclick="this.form.echo.value=prompt('prompt 메세지 창 호출')">
+	prompt 메세지 창 호출<br>
+	<input type="text" name="echo">
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- /WebContent/imgex2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>마우스 이벤트를 이용한 이미지 변경하기</title>
+<script type="text/javascript">
+	imgOver = new Array(4);   //방이 4개 있는 배열 객체 생성
+	imgOut = new Array(4);
+	//imgOver.length : 4
+	//imgOut.length : 4
+	for(var i=0; i<imgOver.length; i++){
+		imgOver[i] = new Image();  //이미지 객체 생성 후 imgOver 배열에 집어넣음. 문서에 저장되지 않은 이미지 생성
+		imgOut[i] = new Image();
+		imgOver[i].src = "img/"+i+"_over.jpg";  //img/0_over.jpg
+		imgOut[i].src = "img/"+i+"_out.jpg";    //img/0_out.jpg
+	}
+	//document.forms : 현재 화면에 존재하는 form(태그)들을 배열로 리턴
+	function mover(n){
+		//document.images : 현재화면에 존재하는 이미지(태그)들을 배열의 형태로 리턴
+		document.images[n].src = imgOver[n].src;
+	}
+	function mout(n) {
+		document.images[n].src = imgOut[n].src;
+	}
+</script>
+</head>
+<body>
+<table>
+	<tr><td height="60" align="center">
+	<a href="#" onmouseover="mover(0)" onmouseout="mout(0)">
+	<img name="m0" src="img/0_out.jpg">
+	</a></td></tr>
+	<tr><td height="60" align="center">
+	<a href="#" onmouseover="mover(1)" onmouseout="mout(1)">
+	<img name="m1" src="img/1_out.jpg">
+	</a></td></tr>
+	<tr><td height="60" align="center">
+	<a href="#" onmouseover="mover(2)" onmouseout="mout(2)">
+	<img name="m2" src="img/2_out.jpg">
+	</a></td></tr>
+	<tr><td height="60" align="center">
+	<a href="#" onmouseover="mover(3)" onmouseout="mout(3)">
+	<img name="m3" src="img/3_out.jpg">
+	</a></td></tr>
+	</table>
+</body>
+</html>

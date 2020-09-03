@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200525/eventex3.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이벤트 제거</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("h1").click(function(){
+			$(this).html("CLICK")
+			$(this).off();             //이벤트 소스의 이벤트 제거
+			alert("이벤트가 발생했습니다.")
+		})
+	})
+</script>
+</head>
+<body>
+<h1>Header-0</h1><h1>Header-1</h1><h1>Header-2</h1>
+</body>
+</html>

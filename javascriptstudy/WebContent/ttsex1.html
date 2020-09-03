@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- /WebContent/ttsex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Text to Speech 연습</title>
+<script type="text/javascript">
+	var msg = new SpeechSynthesisUtterance();   //TTS 객체.
+	function setlang(t){
+		msg.lang = t;    //언어 설정
+	}
+	function ttstTest(){
+		msg.text= intext.value;    //id가 intext 인 태그의 value 값
+		speechSynthesis.speak(msg);
+	}
+</script>
+</head>
+<body>
+<input type="text">
+<!-- textarea : 여러줄의 text를 쓸 수 있는 textbox. <textarea>와 </textarea> 사이의 값이 value값 -->
+<textarea rows="10" cols="100" id="intext">안녕하세요</textarea>
+<!-- setlang('ko_KR') : 읽는 언어를 한국어로 설정 -->
+<input type="button" onclick="setlang('ko_KR'); ttsTest()" value="읽기">
+<br>
+</body>
+</html>

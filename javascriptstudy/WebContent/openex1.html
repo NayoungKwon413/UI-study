@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- /WebContent/openex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>새창 열기</title>
+<script type="text/javascript">
+	var nw;   // nw 는 inputcheckex1.html 의 window 객체와 같음. nw를 통해 inputcheckex1.html 에 접근할 수 있음. 
+	function open_win() {
+		// nw : 새 창의 window 객체
+		// open("url", "윈도우이름", "새 창의 옵션값")
+		nw = open("", "login", "width=600, height=200, menubar=no, top=20, left=200");  //새 창의 사이즈는 600*200+menubar 생략+새 창의 뜨는 위치(top=20, left=200)
+		nw.document.write("새로운 윈도우 입니다.<br>")
+		nw.document.write("openex1.html 페이지의 open 함수로 열린 윈도우입니다.<br>")
+	}
+	function close_win() {
+		nw.close();
+	}
+	function open_win2(){
+		nw = open("inputcheckex1.html", "new", "width=800, height=600, menubar=no, top=20, left=200");
+		//새 창에 값을 전달하기
+		nw.onload = function(){
+			nw.document.f.id.value = 'aaa';
+		}
+	}
+</script>
+</head>
+<body>
+<a href="javascript:open_win()">새창열기</a><br>
+<a href="javascript:open_win2()">inputcheckex1.html 창열기</a><br>
+<a href="javascript:close_win()">새창닫기</a><br>
+<form name="f">
+	아이디 : <input type="text" name="id" id="id"><br>
+	비밀번호 : <input type="text" name="pw" id="pw"><br>
+</form>
+</body>
+</html>

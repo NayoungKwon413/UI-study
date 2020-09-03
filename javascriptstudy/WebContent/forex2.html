@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- /WebContent/forex2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>입력받은 숫자까지의 합 구하기</title>
+<script type="text/javascript">
+	function sum() {
+		end=num.value;   /* id 는 유일한 값. id명.value 으로 사용가능. */
+		tot =0;
+		for(var i=1; i<=end; i++){
+			tot += i;
+		}
+		result.value= tot;
+	}
+</script>
+</head>
+<body>
+1부터
+<input type="text" id="num"> 까지의 합:
+<input type="button" value="=" onclick="sum()">    <!-- onclick : "sum()" -> 클릭되면 sum() 함수 호출!  -->
+<input type="text" id="result"><br>
+
+</body>
+</html>

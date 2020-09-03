@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- /WebContent/dateex2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>달력 출력하기</title>
+<style type="text/css">
+	table {width:100%; border-collapse: collapse;}
+	th,td {border : 3px solid #bcbcbc; text-align : center; padding : 8px;}
+	th {background-color : #e2e2e2; color:#111111;}
+	td {background-color : #f2f2f2;}
+	caption {color : #111111; font-size : 20px; background-color: #ffffff;}
+	.text-red{color:red;}
+	.text-blue{color:blue;}
+</style>
+<script type="text/javascript">
+	function show_cal(){
+		var year = parseInt(y.value)
+		var month=parseInt(m.value)
+		start = new Date(year, month-1,1)
+		end = new Date(year, month,0)
+		day =1;
+		var cale = "<table><caption>" + year + "년" + month + "월</caption><tr>";
+		for(var i=0; i<7; i++){
+			if(i==0) cale += "<th>일</th>"
+				if(i==1) cale += "<th>월</th>"
+					if(i==2) cale += "<th>화</th>"
+						if(i==3) cale += "<th>수</th>"
+							if(i==4) cale += "<th>목</th>"
+								if(i==5) cale += "<th>금</th>"
+									if(i==6) cale += "<th>토</th>"
+		}
+		cale +="</tr>"
+		for(var i=0; i<6; i++){
+			cale += "<tr>"
+			for(var j=0; j<7; j++){
+				if(i==0 && j<start.getDay()) cale += "<td>&nbsp;</td>"
+				else {
+					if(day> end.getDate()) break;
+					cale += "<td>" + day + "</td>"
+					day++
+				}
+			}
+			cale+="</tr>"
+		}
+		console.log(cale);
+		cal.innerHTML = cale;
+		
+		
+		
+		
+	}
+</script>
+</head>
+<body>
+<select id="y">
+	<option>2017</option><option>2018</option><option>2019</option>
+	<option selected="selected">2020</option><option>2021</option>
+</select><select id="m">
+	<option value="1">1월</option><option value="2">2월</option>
+	<option value="3">3월</option><option value="4">4월</option>
+	<option value="5">5월</option><option value="6">6월</option>
+	<option value="7">7월</option><option value="8">8월</option>
+	<option value="9">9월</option><option value="10">10월</option>
+	<option value="11">11월</option><option value="12">12월</option>
+</select>
+<input type="button" value="달력보기" onclick="show_cal()">
+<br><span id="cal"></span>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>클릭시 h1 태그 추가하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("h1").click(function(){
+			var num = $("h1").length;
+			var header = $(this).html();
+			$("#wrap").append("<h1>" + num + "-" + header +"</h1>")
+		})
+	})
+/*
+	$(document).on("click", "h1", function(){
+		var num = $("h1").length;
+		var header = $(this).html();
+		$("#wrap").append("<h1>" + num + "-" + header +"</h1>")
+	})
+	h1 태그에 이벤트를 설정하나, 후에 추가되는 h1 태그에도 이벤트가 설정됨.
+	
+/*
+  $(function(){
+	 $("#wrap").click(function(){
+		 var num = $("h1").length;
+		 var header = $("h1", this).html();
+		 $("#wrap").append("<h1>" + num + "-" + header +"</h1>")
+	 })
+ })
+ 
+	div 태그 전체에 이벤트가 설정됨. 
+ */
+
+</script>
+</head>
+<body>
+<hr>
+  <div id="wrap">
+     <h1>Header</h1>
+  </div>
+<hr>
+</body>
+</html>

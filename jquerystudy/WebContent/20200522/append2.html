@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- /WebCotent/20200522/append2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 위치 변경하기</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("img").css("width",250);    // img 태그들의 크기 설정
+		// setTimeOut(function(){}, 2000) : 2초 후에 함수 1번만 호출
+		// setInterval(function(){}, 2000) : 2초마다 함수를 계속 호출
+		setInterval(function(){      
+			$("img").first().appendTo("body");   //제일 앞에 위치한 이미지를 body로 붙이기-> 제일 뒤로 이동 
+		}, 2000)
+	})
+</script>
+</head>
+<body>
+	<img src="Jellyfish.jpg" />
+	<img src="Desert.jpg" />
+	<img src="Hydrangeas.jpg" />
+</body>
+</html>

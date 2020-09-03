@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>      <!-- 무조건 첫 줄에 시작 -->
+<!-- web.xml : 웹어플리케이션의 기본 설정 담당.  -->
+<!-- root 태그, root 엘리먼트 : 한 개만 가능 
+	xmlns : xml 네임 스페이스. 
+-->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+		http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+		id="WebApp_ID" version="4.0">
+  <display-name>jspstudy1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 404 오류 발생시 페이지 설정하기 -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/chap9/error404.jsp</location>
+  </error-page>
+  <!-- 500 오류 발생시 페이지 설정하기 
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/chap9/error500.jsp</location>
+  </error-page>-->
+  <!-- NumberFormatException 오류 발생시 페이지 설정하기 
+  <error-page>
+  	<exception-type>java.lang.NumberFormatException</exception-type>
+  	<location>/chap9/errorNumberFormat.jsp</location>
+  </error-page>-->
+</web-app>

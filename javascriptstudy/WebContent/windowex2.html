@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- /WebContent/windowex2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>window 객체에서 사용되는 함수</title>
+</head>
+<body>
+<h3>window 객체의 함수</h3>
+<hr>
+<script type="text/javascript">
+	var i=2;
+	//eval(수식) : 수식의 결과값을 리턴
+	document.write('eval(3+4*(5-i))='+eval(3+4*(5-i))+"<br>")
+	//isNaN(문자): 문자가 숫자형 문자가 아니니 ? -> 숫자인 경우 거짓
+	document.write('isNaN("한국")='+isNaN("한국")+"<br>")  //true
+	document.write('isNaN("123")='+isNaN("123")+"<br>")  //false
+	//parseInt(문자열) : 문자열을 정수로 변경
+	//parseInt(문자열, 8) : 문자열을 정수로 변경하는데 8진수로 변경
+	//parseInt(문자열, 16) : 문자열을 정수로 변경하는데 16진수로 변경
+	document.write('parseInt("10")='+parseInt("10")+"<br>")
+	document.write('parseInt("12",8)='+parseInt("12",8)+"<br>")
+	document.write('parseInt("FF",16)='+parseInt("FF",16)+"<br>")
+</script>
+</body>
+</html>

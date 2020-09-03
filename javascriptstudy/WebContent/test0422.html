@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- /WebContent/test0422.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>초를 시분초로 환산하기</title>
+<style type="text/css">
+table {width:100%; border-collapse: collapse;}
+	th,td {border : 3px solid #bcbcbc;
+		text-align : center; padding : 8px;}
+	th {background-color : #e2e2e2; color:#111111;}
+	td {background-color : #f2f2f2;}
+	input[type=text] {text-align : right;}
+</style>
+<script type="text/javascript">
+	function hms(){
+		var sec1 = parseInt(orisec.value);
+		var sec2 = sec1%60
+		var sec3 = parseInt(sec1/60)%60
+		var sec4 = parseInt((sec1/60)/60)
+		h.value=sec4
+		m.value=sec3
+		s.value=sec2
+	}
+</script>
+</head>
+<body>
+<table>
+<tr><td>입력초</td><td><input type="text" id="orisec"></td>
+	<td><input type="button" value="시분초로환산하기" onclick="hms()"></td></tr>
+<tr><th>시간</th><th>분</th><th>초</th></tr>
+<tr><td><input type="text" id="h"></td><td><input type="text" id="m"></td>
+	<td><input type="text" id="s"></td></tr>
+</table>
+</body>
+</html>

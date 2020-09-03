@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- /WebContent/book.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>책 정보 보기</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function doXml(){
+		sendRequest("book.xml", null, xmlresult, "GET");
+	}
+	function xmlresult() {
+		if(ajax.readyState == 4){
+			if(ajax.status == 200){
+				xmlcontrol();
+			}
+		}
+	}
+	function xmlcontrol() {
+		var xmlDoc = ajax.responseXML;
+		var books = xmlDoc.getElementsByTagName("book");
+		var sumprice = 0;
+		var htmldata = "<table border='1'><caption>책 정보 보기</caption><tr><th>제목</th><th>저자</th><th>가격</th></tr>";
+		for(var i=0; i<books.length; i++){
+			var title = books[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+			var author = books[i].getElementsByTagName("author")[0].childNodes[0].nodeValue;
+			var price = books[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+			htmldata += "<tr><td>" + title + "</td><td>" + author + "</td><td>" + price + "</td></tr>"
+			sumprice += parseInt(price);
+		}
+		htmldata += "<tr><td colspan='3' align='center'>총: " + books.length + "권, 총 가격: " + sumprice +"</td></tr></table>"
+		result.innerHTML += htmldata;
+	}
+</script>
+</head>
+<body>
+<input type="button" value="책 목록" onclick="doXml()">
+<div id="result"></div>
+</body>
+</html>

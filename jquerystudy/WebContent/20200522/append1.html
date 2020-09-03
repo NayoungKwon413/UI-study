@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/append1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>동적으로 생성된 태그요소를 화면에 추가하기</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// h1 태그를 생성하여, 내용으로 Hello World 를 설정하고 화면에 출력하기
+		// appendTo 함수 : body 태그의 하위에 붙여넣기. 추가의 개념!
+		$("<h1></h1>").html("Hello World").appendTo("body")
+		// 이미지 태그를 생성하여 속성값이 Jellyfish.jpg 이미지를 화면에 출력하기
+		// $("<img>") : img 라는 태그를 만듦 -> .attr("src","Jellyfish.jpg") : src="Jellyfish.jpg" 라는 속성 추가 -> .appendTo("body") : 화면에 출력
+		$("<img>").attr("src","Jellyfish.jpg").appendTo("body")
+		$("<img>").attr({"src":"Jellyfish.jpg", "width":300, "height":200}).appendTo("body")   // 속성 여러개 추가
+		$("<img>", {"src":"Jellyfish.jpg", "width":300, "height":200}).appendTo("body")        // 이런 식도 가능
+		
+		var h1 = "<h1>Header1</h1>"
+		var h2 = "<h2>Header2</h2>"
+		$("body").append(h1,h2,h1,h2)
+	})
+</script>
+</head>
+<body>
+
+</body>
+</html>

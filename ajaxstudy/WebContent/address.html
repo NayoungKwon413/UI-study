@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- /WebContent/address.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>xml 분석하기</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function loadxml(rtype, tag){   // 매개변수는 지역변수. rtype과 tag는 해당 함수에서만 사용 가능하다는 의미
+		requestType = rtype;        // 전역변수. 만약 var requestType 형태이면 requestType 은 지역변수. 해당 함수에서만 사용 가능.
+		requestTag = tag;           // 전역변수
+		sendRequest("address.xml", null, parseXml, "GET");
+	}
+	function parseXml(){
+		if(ajax.readyState == 4){
+			if(ajax.status == 200){
+				if(requestType == 'all')  //requestType : 지역변수를 전역변수로 저장한 것.
+					listAllStates();
+				else listPartStates();
+			}else{
+				alert("서버 오류 : " + ajax.status);
+			}
+		}
+	}
+	function listAllStates(){
+		console.log(ajax.responseText);
+		// xmlDoc : 응답 받은 xml 문서의 dom 객체의 최상단 루트노드값 저장. 
+		var xmlDoc = ajax.responseXML;   //responseXML : xml 문서 DOM 트리 형태로 리턴
+		var allStates = xmlDoc.getElementsByTagName("state");  //xmlDoc 중 태그 이름이 'state'인 노드들을 allStates 변수에 저장 -> 배열
+		var divTag = document.getElementById("result");        // divTag : document 에서 id 속성값이 result인 태그 리턴. <div id="result"></div>
+		divTag.innerHTML = "서울 전체 구";
+		for(var i=0; i<allStates.length; i++){
+			// divTag 에 state 들의 자녀노드들의 value값을 집어넣기
+			divTag.innerHTML += "<br>-" + allStates[i].childNodes[0].nodeValue;  //childNodes가 여러개일 때는 역시 childNodes[i]로 표현 
+		}
+	}
+	function listPartStates(){
+		var xmlDoc = ajax.responseXML;
+		var part = xmlDoc.getElementsByTagName(requestTag);
+		var partStates = part[0].getElementsByTagName("state");
+		var divTag = document.getElementById("result"); 
+		divTag.innerHTML = "서울 " + requestType + "쪽 구";
+		for(var i=0; i<partStates.length; i++){
+			divTag.innerHTML += "<br>-" + partStates[i].childNodes[0].nodeValue;
+		}
+	}
+</script>
+</head>
+<body>
+<h1>서울의 구 정보</h1>
+<input type="button" value="서울 전체 구" onclick="loadxml('all', 'all')">
+<input type="button" value="서울 동쪽 구" onclick="loadxml('동', 'east')">
+<input type="button" value="서울 서쪽 구" onclick="loadxml('서', 'west')">
+<input type="button" value="서울 남쪽 구" onclick="loadxml('남', 'south')">
+<input type="button" value="서울 북쪽 구" onclick="loadxml('북', 'north')">
+<div id="result"></div>
+</body>
+</html>

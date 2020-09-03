@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200526/animate2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>animate 함수 예제</title>
+<style type="text/css">
+	div {
+		width:50px; height:50px;
+		background-color:orange;
+		position:relative;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#div1").click(function(){
+			var width = $(this).css("width");    // div 가로길이 리턴
+			var height = $(this).css("height");  // div 세로길이 리턴
+			$(this).animate({
+				width : parseInt(width) + 50,    // click 시, style 최종 결과값이 변경
+				height : parseInt(height) + 50
+//				width : "+=50",                  // 이러한 형태로도 가능
+//				height : "+=50"
+			}, 'slow')
+		});
+		// div2 태그를 클릭하면, 2초 간격으로 이동, 가로, 세로 크기 증가하기
+		$("#div2").click(function(){
+			$(this).animate({
+				left : "+=50"
+			},2000).animate({
+				width : "+=50"
+			},2000).animate({
+				height : "+=50"
+			},2000)
+		});
+		// click 모션없이 바로 동작
+		$("#div3").animate({left:"+=50"}, 2000)
+		$("#div3").animate({width:"+=50"}, 2000)
+		$("#div3").animate({height:"+=50"}, 2000)
+		setTimeout(function(){
+			$("#div3").clearQueue();   // 에니메이션 큐를 삭제
+			$("#div3").hide();         // 해당 컴포넌트를 숨김
+		},6000)
+		// 페이지 시작 이후 7초 이후에 보이도록 설정
+		setTimeout(function(){
+			$("#div3").show();
+		},7000)
+	})
+</script>
+</head>
+<body>
+<div id="div1"></div><br>
+<div id="div2"></div><br>
+<div id="div3"></div>
+</body>
+</html>

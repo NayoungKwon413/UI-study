@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- /WebContent/selectex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>도시 선택하기 : 배열 예제</title>
+<script type="text/javascript">
+	//new Option() : select 밑에 있는 option 들을 의미
+	// 1차원 배열
+	sies = new Array(new Option("서울시"), new Option("경기도"), new Option("충청남도"), new Option("부산시"))
+	// 2차원 배열
+	gues = new Array();
+	gues[0] = new Array();
+	gues[1] = new Array();
+	gues[2] = new Array();
+	gues[3] = new Array();
+	//서울시
+	gues[0][0] = new Option("강남구");
+	gues[0][1] = new Option("서초구");
+	gues[0][2] = new Option("구로구");
+	gues[0][3] = new Option("금천구");
+	gues[0][4] = new Option("관악구");
+	gues[0][5] = new Option("양천구");
+	//경기도
+	gues[1][0] = new Option("이천시");
+	gues[1][1] = new Option("광주시");
+	gues[1][2] = new Option("부천시");
+	gues[1][3] = new Option("안양시");
+	//충청남도
+	gues[2][0] = new Option("천안시");
+	gues[2][1] = new Option("유성시");
+	gues[2][2] = new Option("아산시");
+	gues[2][3] = new Option("논산시");
+	//부산시
+	gues[3][0] = new Option("강서구");
+	gues[3][1] = new Option("해운대구");
+	gues[3][2] = new Option("영도구");
+	gues[3][3] = new Option("동구");
+	
+	window.onload = function() {    // window가 로드되자마자 나타나는 기능 ->  이벤트 핸들러
+		for(i=0; i<sies.length; i++){
+			document.f.si.options[i] = sies[i]
+		}
+		for(i=0; i<gues.length; i++){
+			document.f.gu.options[i] = gues[0][i]
+		}
+	}
+	function selectgu(f){
+		f.gu.options.length=0     // 기존의 option 들을 제거.
+		// selectedIndex : 선택된 값의 인덱스
+		sidx = f.si.selectedIndex
+		for(i=0; i<gues[sidx].length; i++){
+			f.gu.options[i] = gues[sidx][i]
+		}
+	}
+</script>
+</head>
+<body>
+<form name ="f">
+<!-- onchange : 선택된 값이 변경될 때 발생되는 이벤트 
+	this.form : <form name ="f"> 객체. this=select 즉, select가 속한 form 을 뜻함
+-->
+	<select name ="si" onchange="selectgu(this.form)">
+		<option>선택</option>
+	</select>
+	<select name="gu"></select>
+</form>
+</body>
+</html>

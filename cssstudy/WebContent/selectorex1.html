@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- /WebContent/selectorex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>후손선택자, 자손선택자</title>
+<style type="text/css">
+	/*#header 태그의 하위 태그 중 h1 태그의 글자색을 빨강으로 설정 */
+	#header h1{color:red;}
+	/*#header 태그의 자식 태그 중 h1 태그의 글자색을 분홍색으로 설정 */
+	#header>h1{color:pink;}
+	/*#header 태그 이거나 h1 태그의 글자색을 파랑으로 설정*/
+	#header, h1{color:blue;}     /* ,: or의 의미. header 태그 아래이거나 h1 태그*/
+	/*div 태그의 배경색을 노랑으로 설정*/
+	div {background:yellow;}
+	/*#header 태그의 하위의 nav 태그의 배경색을 초록으로 설정*/
+	#header #nav{background:green;}
+	/*h1 태그 중 class 속성이 title인 태그의 배경색을 파랑색으로 설정*/
+	h1.title{background:blue;}   /*h1 태그 와 class 속성은 동등한 관계 (상하적 관계 아님)*/
+	/*h1 태그 중 id 속성이 content인 태그의 글자 크기를 20px로 설정*/
+	h1#content{font-size:50px;}
+</style>
+</head>
+<body>
+<div id="header">
+  <h1 class="title">h1 class="title" 태그</h1>
+  <div id="nav">
+  <h1>div id="nav" 하위 h1 태그</h1>
+  </div>
+  <p>#header 태그의 하위 p태그</p>
+</div>
+<h1 id="content">body의 하위 h1 태그</h1>
+<p>body의 하위 p태그</p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- /WebContent/css1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>style 속성을 담당하는 css 함수</title>
+<style type="text/css">
+	.first {color: red; background: yellow;}
+	.second {color : pink;}
+	.third {color : orange;}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var color = $("h1").css("color")
+		alert(color)
+		color = $(".second").css("color")
+		alert(color)
+		color = $(".third").css("color")
+		alert(color)
+		
+		var back = $(".first").css("background")
+		alert(back)
+	})
+</script>
+</head>
+<body>
+<h1 class="first">Header-0</h1>
+<h1 class="second">Header-1</h1>
+<h1 class="third">Header-2</h1>
+</body>
+</html>

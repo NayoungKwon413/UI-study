@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200527/jqueryajax2.html 
+	1. submit 버튼이 클릭된 경우, id, pass 두 개의 값을 ajax2.jsp 로 전송하기
+	2. ajax2.jsp 페이지에서 member 테이블을 읽어 id, pass 검증(jstl 이용하기)
+	   id, pass 일치하는 경우 : 반갑습니다. name 님 => message 부분에 출력
+	   id, pass 불일치 하는 경우 : 아이디 또는 비밀번호가 틀립니다 => message 부분에 출력
+
+	아이디 중복 버튼 클릭 시,
+	1. id 파라미터를 ajax3.jsp 로 전송
+	2. 해당 아이디가 존재하면 '존재하는 아이디입니다.' message 부분에 출력 후 id 입력란 지우기
+	3. 해당 아이디가 존재하지 않으면 '사용 가능한 아이디입니다.' message 출력
+-->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>ajax 를 이용한 로그인</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#submit").click(function(){
+			var param = {id:$("#id").val(), pass:$("#pass").val()};
+			$.ajax({
+				url : "ajax2.jsp",
+				type : "POST",
+				data : param,
+				success : function(data){   // 콜백함수
+					$("#message").html(data);
+				},
+				error : function(e){
+					alert("서버 오류:" + e.status);
+				}
+			})
+			return false;    // 기본 제공 이벤트 취소
+		})
+		
+		$("#btn").click(function(){
+			var param = "id="+$("#id").val();
+			$.ajax({
+				url : "ajax3.jsp",
+				type : "POST",
+				data : param,
+				success : function(data){
+					$("#message").html(data);
+					if($("h1").is(".find")){
+						$("#id").val("");
+					}
+				},
+				error : function(e){
+					alert("서버 오류:" + e.status);
+				}
+			})
+			return false;
+		})
+	})
+</script>
+</head>
+<body>
+<form name="f">
+	아이디<input type="text" id="id">
+	<input type="button" value="아이디중복검사" id="btn">
+	<br>
+	비밀번호<input type="text" id="pass"><br>
+	<input type="submit" id="submit" value="로그인">
+</form>
+<div id="message"></div>
+</body>
+</html>

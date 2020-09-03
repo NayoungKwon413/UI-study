@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/html1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>html 함수 예제</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+//		$("div").html("<h1>Header</h1>")   // .html : 태그가 적용되어 출력 => Header
+//		$("div").text("<h1>Header</h1>")   // .text : 문자열 그대로 출력  => <h1>Header</h1>
+
+		// 첫번째 div 태그의 내용이 <h1>Header-0</h1> 으로 설정하고, 태그 인식되도록 출력
+		// 두번째 div 태그는 -1 -2...
+//		$("div:eq(0)").html("<h1>Header-0</h1>")
+//		$("div:eq(1)").html("<h1>Header-1</h1>")
+//		$("div:eq(2)").html("<h1>Header-2</h1>")
+		
+		$("div").html(function(i){
+			return "<h1>Header-" + i + "</h1>"
+		})
+	})	
+</script>
+</head>
+<body>
+<div></div><div></div><div></div>
+</body>
+</html>

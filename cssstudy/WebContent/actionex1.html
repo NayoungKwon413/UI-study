@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- /WebContent/actionex1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>반응 선택자</title>
+<style type="text/css">
+	h1.a1{color:red;}
+	h1.b1{background:black;}
+	/* h1 태그에 마우스 커서가 이동하면 글자색을 흰색으로 변경하기 */
+	h1:hover {color:white;}
+	/* h1 태그에 마우스로 클릭하면 글자색을 파란색으로 변경하기 */
+	h1:active {color:blue;}
+	/* link : 초기상태. 방문한 적 없는 링크인 경우 */
+	a:link{color: blue;}
+	/* visited: 방문한 적이 있는 링크인 경우 */
+	a:visited{color:red;}
+	/* hover: 마우스 커서가 영역 내부에 들어온 경우. 배경을 노랑색으로 변경하기 */
+	a:hover{background-color:yellow;}
+	/* active: 마우스를 클릭한 경우. 배경을 검정색으로, 글자색을 흰색으로 변경 */
+	a:active{background-color:black; color:white;}
+	/* a 태그의 class 속성값이 default인 경우 방문한 사이트는 글자색 green 으로 변경 */
+	a.default:visited{color:green;}
+	/* a 태그의 class 속성값이 color 인 경우 방문한 사이트인 경우 글자색을 navy로 변경 */
+	a.color:visited{color:navy;}
+</style>
+</head>
+<body>
+<h1>반응 선택자 연습</h1>
+<table>
+<tr><td>마우스를 올리면...<br><b>기본값</b><br>
+<a href="http://www.google.com" class="default">구글</a>
+<hr>
+<a href="http://www.google.com" class="color">구글</a>
+</td></tr>
+</table>
+<h1 class="a1 b1">class 속성 a1 b1</h1>  <!-- a1 이면서 b1 :두가지 속성을 같이 가질 수 있음.-->
+<h1 class="a1">class 속성 a1</h1>
+<h1 class="b1">class 속성 b1</h1>
+
+</body>
+</html>

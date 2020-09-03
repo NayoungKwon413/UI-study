@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200525/eventex6.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>선그리기</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var canvas = document.getElementById("canvas");   // id 속성값이 "canvas"인 문서를 canvas 에 넣음
+		var context = canvas.getContext("2d");
+//		$("#canvas").on({
+		$(canvas).on({
+			mousedown : function(event) {  //event : mouse 이벤트의 객체. 이벤트에 관련한 정보를 저장
+				var position = $(this).offset();     // 캔버스 가장자리
+				var x = event.pageX - position.left; // 클릭 시작점 좌표 구하기
+				var y = event.pageY - position.top;
+				context.beginPath();  //시작점. 시작위치 지정
+				context.moveTo(x,y);  //시작점 저장
+			}, mouseup : function(event){
+				var position = $(this).offset();
+				var x = event.pageX - position.left;
+				var y = event.pageY - position.top;
+				context.lineTo(x,y);   // 시작점부터 현재 x, y 까지 선그리기
+				context.stroke();      // 그리기 해제 
+			}
+		})
+	})
+</script>
+</head>
+<body>
+<canvas id="canvas" width="700" height="400" style="border:3px solid black"></canvas>
+</body>
+</html>
